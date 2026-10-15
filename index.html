@@ -7,7 +7,7 @@
 <meta name="description" content="微研 Weiyan 科學教育 AI 自走車常態班：每週三 17:00–18:30，一期 8 堂，積木式程式、零基礎可報名、可試聽 1 堂。11/30 前報名享早鳥價 NT$4,200。">
 <meta property="og:title" content="AI 自走車常態班｜小小駕訓班 — 微研 Weiyan">
 <meta property="og:description" content="用程式讓車子思考！8 堂課從馬達、感測器到 AI 自動駕駛入門。11/30 前早鳥價 NT$4,200。">
-<meta property="og:image" content="img/flyer.jpg">
+<meta property="og:image" content="https://weiyan-aicar-2026.pages.dev/img/flyer.jpg">
 <meta name="theme-color" content="#050B1F">
 <link rel="icon" href="img/weiyan-symbol-96.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -201,6 +201,43 @@ section{position:relative;padding:120px 0}
 .fcard .ico{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;font-size:32px;background:linear-gradient(135deg,rgba(34,211,230,.25),rgba(10,99,214,.25));border:1px solid rgba(34,211,230,.35);margin-bottom:22px}
 .fcard h3{font-size:24px;font-weight:900;margin-bottom:8px}
 .fcard p{color:var(--muted)}
+
+/* ===== 世界觀預告 ===== */
+.nav ul a.story-link{color:var(--gold)}
+.wt{overflow:hidden;padding:140px 0}
+.wt-img{position:absolute;inset:-10% 0;background:url(img/story/city.webp) center/cover;opacity:.55;transform:translate3d(0,var(--py,0px),0)}
+.wt::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,var(--bg) 0%,rgba(5,11,31,.82) 45%,rgba(5,11,31,.35) 100%),linear-gradient(0deg,var(--bg),transparent 25%,transparent 75%,var(--bg))}
+.wt .wrap{position:relative;z-index:2}
+.wt-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.wt .en.k{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;border:1px solid rgba(247,178,26,.5);background:rgba(247,178,26,.12);color:var(--gold);font-size:13px;font-weight:700}
+.wt h2{font-size:clamp(38px,5.6vw,72px);line-height:1.12;font-weight:900;margin:18px 0}
+.wt p.lead2{color:#c9d8f2;font-size:clamp(17px,1.6vw,19px);max-width:34em}
+.wt p.lead2 b{color:var(--text)}
+.wt-stats{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}
+.wt-stats span{padding:9px 14px;border-radius:12px;background:rgba(5,11,31,.6);border:1px solid var(--line);font-weight:700;font-size:15px;backdrop-filter:blur(6px)}
+.cast-strip{display:flex;margin:0 0 28px 8px}
+.cast-strip img{width:66px;height:66px;margin-left:-12px;border-radius:50%;box-shadow:0 8px 20px rgba(0,0,0,.5);transition:transform .3s var(--ease)}
+.cast-strip img:hover{transform:translateY(-8px) scale(1.12);z-index:2}
+.wt-cards{position:relative;height:520px}
+.wt-card{position:absolute;border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,.2);box-shadow:0 40px 70px -25px rgba(0,0,0,.85);transition:transform .5s var(--ease)}
+.wt-card img{width:100%;height:100%;object-fit:cover}
+.wt-card span{position:absolute;left:12px;bottom:10px;padding:4px 10px;border-radius:8px;background:rgba(5,11,31,.75);font-size:13px;font-weight:700}
+.wt-card.c1{width:78%;aspect-ratio:16/9;left:0;top:30px;transform:rotate(-4deg)}
+.wt-card.c2{width:72%;aspect-ratio:16/9;right:0;bottom:30px;transform:rotate(3deg)}
+.wt-cards:hover .c1{transform:rotate(-6deg) translate(-10px,-10px)}
+.wt-cards:hover .c2{transform:rotate(5deg) translate(10px,10px)}
+.sticker{position:absolute;z-index:3;filter:drop-shadow(0 10px 16px rgba(0,0,0,.5));animation:float 4s ease-in-out infinite}
+.sticker.s1{width:120px;right:4%;top:-10px}
+.sticker.s2{width:104px;left:-14px;bottom:10px;animation-delay:-1.3s}
+.sticker.s3{width:96px;left:46%;top:44%;animation-delay:-2.4s}
+.sticker.s4{width:88px;right:-6px;bottom:42%;animation-delay:-.7s}
+@keyframes float{50%{transform:translateY(-14px) rotate(4deg)}}
+.lstory{display:flex;gap:14px;align-items:center;margin-top:20px;padding:14px 16px;border-radius:18px;background:rgba(247,178,26,.08);border:1px dashed rgba(247,178,26,.45)}
+.lstory img{width:62px;height:62px;flex:none}
+.lstory small{display:block;color:var(--gold);font-weight:700;font-size:12px;letter-spacing:.15em}
+.lstory b{display:block;font-size:18px}
+.lstory span{color:var(--muted);font-size:14px}
+.lstory a{margin-left:auto;color:var(--cyan);font-weight:700;font-size:14px;white-space:nowrap}
 
 /* ===== 8 堂路線 ===== */
 .road{position:relative;height:150px;margin:20px 0 34px}
@@ -420,6 +457,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 110px;color:var(--muted)}
 
 /* ===== RWD ===== */
 @media (max-width:1024px){
+  .wt-grid{grid-template-columns:1fr}.wt-cards{height:420px}
   .hero-grid,.lab,.price-wrap,.reg{grid-template-columns:1fr}
   .features{grid-template-columns:1fr 1fr}
   .stats{grid-template-columns:1fr 1fr}
@@ -448,6 +486,9 @@ footer{border-top:1px solid var(--line);padding:56px 0 110px;color:var(--muted)}
   section{padding:84px 0}
 }
 @media (max-width:600px){
+  .cast-strip img{width:46px;height:46px;margin-left:-9px}
+  .wt-cards{height:300px}.sticker.s1{width:84px}.sticker.s2{width:76px}.sticker.s3{width:70px}.sticker.s4{width:64px}
+  .lstory{flex-wrap:wrap}.lstory a{margin-left:0}
   .features,.stats,.steps,.grid2,.types{grid-template-columns:1fr}
   .stats{grid-template-columns:1fr 1fr}
   .stat{padding:20px 10px}
@@ -513,6 +554,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 110px;color:var(--muted)}
   <ul>
     <li><a href="#features">課程特色</a></li>
     <li><a href="#path">8 堂課</a></li>
+    <li><a href="story.html" class="story-link">✨ 世界觀</a></li>
     <li><a href="#lab">互動體驗</a></li>
     <li><a href="#price">費用</a></li>
     <li><a href="#faq">常見問題</a></li>
@@ -583,6 +625,32 @@ footer{border-top:1px solid var(--line);padding:56px 0 110px;color:var(--muted)}
       <div class="fcard tilt" data-reveal><div class="ico">📡</div><h3>真實感測器</h3><p>讓車子「長眼睛」：讀取距離、判斷障礙，程式第一次接觸真實世界。</p></div>
       <div class="fcard tilt" data-reveal><div class="ico">🔬</div><h3>科學探究</h3><p>摩擦力、能量轉換、速度量測，把自走車變成自然科學實驗。</p></div>
       <div class="fcard tilt" data-reveal><div class="ico">🤖</div><h3>AI 駕駛入門</h3><p>用「感知 → 判斷 → 行動」理解自動駕駛，為進階課程打底。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 世界觀預告 ===== -->
+<section class="wt" id="world">
+  <div class="wt-img" id="wtImg" role="img" aria-label="霧港星上的穹頂城市：曙城"></div>
+  <div class="wrap wt-grid">
+    <div data-reveal>
+      <span class="en k">✨ STORY MODE · 世界觀</span>
+      <h2>8 堂課，其實是<br>一部<span class="gold-text">科幻冒險故事</span></h2>
+      <p class="lead2">2187 年，霧港星。赤冕風暴燒毀了指揮全城的「織網」，四百台巡跑者的程式全被清空——史稱「大靜默」。孩子們化身<b>第一期見習駕訓師</b>，每堂課完成一個城市任務，要在第二次風暴來臨前，教會巡跑者自己巡航。</p>
+      <div class="wt-stats"><span>🌍 霧港星・曙城</span><span>🚗 400 台巡跑者</span><span>⛈️ 8 週後第二次風暴</span><span>🐛 15 種故障生物</span><span>🎖️ 8 枚站章</span></div>
+      <div class="cast-strip">
+        <img src="img/story/char-chief.svg" alt="首席教官" title="首席教官"><img src="img/story/char-xiaodeng.svg" alt="小燈" title="塔台通訊員 小燈"><img src="img/story/char-lan.svg" alt="嵐姐" title="機構技師 嵐姐">
+        <img src="img/story/char-tie.svg" alt="鐵叔" title="動力技師 鐵叔"><img src="img/story/char-bai.svg" alt="白醫師" title="白醫師"><img src="img/story/char-ou.svg" alt="歐婆婆" title="歐婆婆"><img src="img/story/char-runner.svg" alt="巡跑者" title="你的巡跑者夥伴">
+      </div>
+      <a href="story.html" class="btn magnetic">✨ 進入曙城世界觀 →</a>
+    </div>
+    <div class="wt-cards" data-reveal>
+      <div class="wt-card c1"><img src="img/story/hangar-960.webp" alt="第七機庫：見習駕訓師喚醒巡跑者" loading="lazy"><span>第 1 章・第七機庫</span></div>
+      <div class="wt-card c2"><img src="img/story/storm-960.webp" alt="第二次風暴：巡跑者自主巡航" loading="lazy"><span>第 8 章・第二次風暴</span></div>
+      <img class="sticker s1" src="img/story/bug-04.svg" alt="故障生物：偏航症">
+      <img class="sticker s2" src="img/story/bug-12.svg" alt="故障生物：莽撞症">
+      <img class="sticker s3" src="img/story/badge-8.svg" alt="站章：自主章">
+      <img class="sticker s4" src="img/story/bug-02.svg" alt="故障生物：沉睡症">
     </div>
   </div>
 </section>
@@ -717,7 +785,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 110px;color:var(--muted)}
     <div class="level" data-reveal>
       <div class="lv"><span class="en">LEVEL 1 · NOW</span><h3>AI 自走車常態班</h3><ul><li>積木式程式基礎</li><li>循序、條件、迴圈三大邏輯</li><li>感測器與參數校正</li><li>不計分、不比賽，重學習歷程</li></ul></div>
       <div class="arrow">➜</div>
-      <div class="lv next"><span class="en">LEVEL 2 · NEXT</span><h3>進階比賽班</h3><ul><li>循線、多感測器整合</li><li>函式、變數與 PID 控制</li><li>以競賽任務為目標訓練</li><li>計時挑戰與成果發表</li></ul></div>
+      <div class="lv next"><span class="en">LEVEL 2 · NEXT</span><h3>進階比賽班</h3><p style="color:var(--gold);font-weight:700;margin:-6px 0 12px">🚀 故事中的「深空遠征隊」</p><ul><li>循線、多感測器整合</li><li>函式、變數與 PID 控制</li><li>以競賽任務為目標訓練</li><li>計時挑戰與成果發表</li></ul></div>
     </div>
   </div>
 </section>
@@ -912,6 +980,7 @@ addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', scrollY > 40);
   const reg = $('#register').getBoundingClientRect();
   mcta.classList.toggle('hide', scrollY < innerHeight * .6 || reg.top < innerHeight);
+  if (!reduce) { const w = $('#world').getBoundingClientRect(); if (w.bottom > 0 && w.top < innerHeight) $('#wtImg').style.setProperty('--py', ((w.top + w.height / 2 - innerHeight / 2) * -.12) + 'px'); }
   if (!reduce) { const b = $('#band').getBoundingClientRect(); if (b.bottom > 0 && b.top < innerHeight) $('#bandImg').style.setProperty('--py', ((b.top + b.height / 2 - innerHeight / 2) * -.12) + 'px'); }
 }, { passive: true });
 $('#menuBtn').addEventListener('click', () => nav.classList.toggle('open'));
@@ -977,6 +1046,10 @@ if (matchMedia('(pointer:fine)').matches && !reduce) {
 })();
 
 /* ================== 8 堂課程路線 ================== */
+const STORY = [
+  ['甦醒', '點火', '第七機庫', '點火章'], ['歪掉的補給線', '直線信任', '溫室長廊', '校正章'], ['霧中的回聲眼', '回聲測距', '霧門氣閘', '回聲章'], ['嵐與鐵的爭論', '證據說話', '醫療艙測速道', '證據章'],
+  ['一張紙上的路線', '補給路線', '倉儲區補給路線', '路線章'], ['落石雨中的判斷', '穿越礦道', '外環礦道', '判斷章'], ['交通恢復日', '城市術科', '住宅環', '術科章'], ['第二次風暴', '自主巡航', '全城', '自主章']
+];
 const LESSONS = [
   { t: '機器人為什麼會動？', q: '先看懂自走車的系統，再寫第一段控制程式', goal: '認識自走車的主要組成，能用基礎程式控制前進、後退與停止。', idea: '電池、控制器、馬達，電能如何轉換成動能', doit: '連接自走車與電腦、測試左右馬達、完成前進／停止／後退', codes: ['科E1', '科E2', 'INa-Ⅲ-5', 'INa-Ⅲ-6'] },
   { t: '為什麼車子會跑歪？', q: '真實世界有誤差，工程就是觀察與校正', goal: '觀察左右輪差異，理解摩擦與馬達輸出造成的偏移，並嘗試調整參數。', idea: '摩擦力、馬達差速、校正、變因', doit: '讓車直行觀察偏移、比較不同地面、微調左右馬達輸出', codes: ['INb-Ⅲ-3', '科E4', '科E8', 'A2'] },
@@ -1004,7 +1077,9 @@ const LESSONS = [
     const s = $$('.stop', stops)[cur], r = stops.getBoundingClientRect(), sr = s.getBoundingClientRect();
     const cx = sr.left - r.left + sr.width / 2;
     car.style.left = cx + 'px'; lit.style.width = cx + 'px';
-    box.innerHTML = `<div class="lesson-anim"><div class="num">0${cur + 1}</div><h3>${l.t}</h3><p class="q">${l.q}</p></div>
+    const st = STORY[cur];
+    box.innerHTML = `<div class="lesson-anim"><div class="num">0${cur + 1}</div><h3>${l.t}</h3><p class="q">${l.q}</p>
+      <div class="lstory"><img src="img/story/badge-${cur + 1}.svg" alt="${st[3]}"><div><small>📖 故事任務・第 ${cur + 1} 章</small><b>「${st[0]}」</b><span>任務代號「${st[1]}」・📍${st[2]}・解鎖${st[3]}</span></div><a href="story.html#map">看故事 →</a></div></div>
       <dl class="lesson-anim"><div><dt>學習目標</dt><dd>${l.goal}</dd></div><div><dt>關鍵概念</dt><dd>${l.idea}</dd></div><div><dt>動手實作</dt><dd>${l.doit}</dd></div>
       <div><dt>108 課綱對應</dt><dd class="codes">${l.codes.map(c => `<span>${c}</span>`).join('')}</dd></div></dl>`;
   }

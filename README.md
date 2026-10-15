@@ -6,6 +6,8 @@
 |---|---|
 | `index.html` | 報名網站本體（單一檔案，直接上傳即可） |
 | `img/` | 網站圖片（微研 LOGO、課堂實況照片、傳單） |
+| `story.html` | 世界觀頁《曙城重啟》：故事、地圖、角色、故障生物圖鑑、站章與駕照 |
+| `img/story/` | 世界觀用圖：3 張 AI 場景插圖（city／hangar／storm）、角色頭像、15 隻故障生物、8 枚站章（SVG） |
 | `google-apps-script/Code.gs` | 接收報名資料、寫入 Google 試算表的程式 |
 
 ## 一、接上 Google 試算表（約 5 分鐘，只需做一次）
