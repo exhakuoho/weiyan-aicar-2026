@@ -9,7 +9,7 @@
 <meta property="og:description" content="用程式讓車子思考！8 堂課從馬達、感測器到 AI 自動駕駛入門。11/30 前早鳥價 NT$4,200。">
 <meta property="og:image" content="img/flyer.jpg">
 <meta name="theme-color" content="#050B1F">
-<link rel="icon" href="img/weiyan-symbol-320.png">
+<link rel="icon" href="img/weiyan-symbol-96.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
@@ -60,11 +60,15 @@ button,input,select{font:inherit;color:inherit}
 #loader.done .ld-core{opacity:0;transform:scale(1.25);filter:blur(10px)}
 #loader.gone{display:none}
 .ld-core{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:18px;transition:all .6s var(--ease);width:min(520px,100% - 32px)}
-.ld-planet{width:190px;height:190px;filter:drop-shadow(0 0 30px rgba(34,211,230,.45))}
-.ld-planet .ring{stroke-dasharray:560;stroke-dashoffset:560;animation:draw 1.6s .2s var(--ease) forwards}
-.ld-planet .ball{transform-origin:100px 104px;animation:pop .8s var(--ease) both}
-.ld-planet .spark{transform-box:fill-box;transform-origin:center;animation:twinkle 1.6s ease-in-out infinite}
-.ld-planet .spark:nth-of-type(2){animation-delay:.5s}.ld-planet .spark:nth-of-type(3){animation-delay:1s}
+.ld-badge{position:relative;width:200px;height:200px;display:grid;place-items:center}
+.ld-badge img{position:relative;z-index:2;width:132px;height:132px;border-radius:50%;background:#fff;padding:10px;box-shadow:0 0 0 6px rgba(34,211,230,.18),0 0 50px rgba(34,211,230,.55);animation:pop .9s var(--ease) both}
+.ld-orbit{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.ld-orbit .r1{transform-origin:100px 100px;animation:spin 6s linear infinite}
+.ld-orbit .r2{transform-origin:100px 100px;animation:spin 9s linear infinite reverse}
+.ld-orbit .draw{stroke-dasharray:560;stroke-dashoffset:560;animation:draw 1.6s .2s var(--ease) forwards}
+.ld-orbit .spark{transform-box:fill-box;transform-origin:center;animation:twinkle 1.6s ease-in-out infinite}
+.ld-orbit .spark:nth-of-type(2){animation-delay:.6s}
+@keyframes spin{to{transform:rotate(360deg)}}
 @keyframes draw{to{stroke-dashoffset:0}}
 @keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
 @keyframes twinkle{0%,100%{transform:scale(.6) rotate(0);opacity:.5}50%{transform:scale(1.15) rotate(45deg);opacity:1}}
@@ -139,7 +143,7 @@ button,input,select{font:inherit;color:inherit}
 .scan{position:absolute;left:0;right:0;height:80px;top:-80px;background:linear-gradient(180deg,transparent,rgba(34,211,230,.35),transparent);animation:scan 3.4s linear infinite;z-index:2;pointer-events:none}
 @keyframes scan{to{top:100%}}
 .hud{position:absolute;z-index:3;font-family:var(--en);font-size:12px;letter-spacing:.15em;color:var(--cyan);display:flex;align-items:center;gap:8px}
-.hud.tl{top:16px;left:18px}.hud.tr{top:16px;right:18px;color:#ff5d6c}.hud.bl{bottom:16px;left:18px;color:var(--text)}
+.hud.tl{top:16px;left:18px}.hud.tr{top:16px;right:18px;color:#ff5d6c}.hud.bl{bottom:16px;right:18px;color:var(--text)}
 .hud.tr::before{content:"";width:9px;height:9px;border-radius:50%;background:#ff5d6c;animation:blink 1s steps(2) infinite}
 @keyframes blink{50%{opacity:0}}
 .box{position:absolute;z-index:3;border:2px solid var(--gold);border-radius:6px;box-shadow:0 0 18px rgba(247,178,26,.6);opacity:0;transform:scale(1.3);transition:all .6s var(--ease)}
@@ -281,6 +285,14 @@ input[type=range]{width:100%;accent-color:var(--cyan);height:28px}
 #lightbox.on{display:grid;animation:fadeIn .3s}
 #lightbox img{max-height:88vh;border-radius:18px;box-shadow:0 30px 80px #000}
 
+/* ===== 全幅大圖帶 ===== */
+.band{padding:0;min-height:86vh;display:flex;align-items:center;overflow:hidden}
+.band-img{position:absolute;inset:-12% 0;background:url(img/band-hands.webp) center/cover;transform:translate3d(0,var(--py,0px),0);will-change:transform}
+.band::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(5,11,31,.92) 0%,rgba(5,11,31,.55) 55%,rgba(5,11,31,.15)),linear-gradient(0deg,var(--bg) 0%,transparent 22%,transparent 78%,var(--bg) 100%)}
+.band-txt{position:relative;z-index:2;padding:80px 0}
+.band-txt .en{color:var(--cyan);font-size:14px;font-weight:700}
+.band-txt p{font-size:clamp(44px,7.4vw,112px);font-weight:900;line-height:1.08;margin:14px 0 34px;text-shadow:0 10px 40px rgba(0,0,0,.6)}
+
 /* ===== 價格 ===== */
 .price-wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:stretch}
 .price{position:relative;padding:44px;border-radius:32px;background:linear-gradient(140deg,#0E2A6B,#081433 60%);border:1px solid rgba(247,178,26,.4);overflow:hidden}
@@ -399,8 +411,7 @@ form .btn[disabled]{opacity:.7;cursor:wait}
 /* ===== 頁尾 ===== */
 footer{border-top:1px solid var(--line);padding:56px 0 110px;color:var(--muted)}
 .foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:center}
-.foot .brand img{width:64px;height:64px}
-.foot .brand b{font-size:22px;color:var(--text)}
+.foot-logo img{width:170px;border-radius:24px;background:#fff;padding:6px;box-shadow:0 20px 50px -20px rgba(34,211,230,.5)}
 .foot small{display:block;margin-top:24px;font-size:13px}
 .mobile-cta{display:none}
 
@@ -476,26 +487,16 @@ footer{border-top:1px solid var(--line);padding:56px 0 110px;color:var(--muted)}
 <div id="loader" aria-hidden="true">
   <div class="half top"></div><div class="half bot"></div>
   <div class="ld-core">
-    <svg class="ld-planet" viewBox="0 0 200 200">
-      <defs>
-        <linearGradient id="pg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1E7BE6"/><stop offset="1" stop-color="#0B4FC0"/></linearGradient>
-        <clipPath id="pc"><circle cx="100" cy="104" r="48"/></clipPath>
-      </defs>
-      <g class="ball">
-        <circle cx="100" cy="104" r="48" fill="url(#pg)"/>
-        <g clip-path="url(#pc)">
-          <path d="M40 118 Q70 88 94 110 T160 104 L160 170 L40 170Z" fill="#11A9DC"/>
-          <path d="M40 140 Q76 110 102 132 T162 124 L162 170 L40 170Z" fill="#22D0C8"/>
-        </g>
-        <circle cx="86" cy="86" r="3.5" fill="#fff"/><circle cx="108" cy="82" r="3.5" fill="#fff"/><circle cx="114" cy="96" r="3" fill="#fff"/>
-      </g>
-      <path id="orbit" class="ring" d="M26 150 C 0 120, 90 70, 160 62 C 205 56, 185 98, 120 132 C 80 152, 40 162, 26 150" fill="none" stroke="#DCEBFF" stroke-width="7" stroke-linecap="round"/>
-      <circle r="7" fill="#22D3E6"><animateMotion dur="3.2s" repeatCount="indefinite"><mpath href="#orbit"/></animateMotion></circle>
-      <path class="spark" d="M150 18 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4z" fill="#F7B21A"/>
-      <path class="spark" d="M176 120 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3z" fill="#F7B21A"/>
-      <path class="spark" d="M168 150 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z" fill="#1E9BEA"/>
-    </svg>
-    <div class="ld-brand">WEIYAN<small>微研 · 科學教育</small></div>
+    <div class="ld-badge">
+      <svg class="ld-orbit" viewBox="0 0 200 200" aria-hidden="true">
+        <g class="r1"><circle class="draw" cx="100" cy="100" r="88" fill="none" stroke="#22D3E6" stroke-width="3" stroke-linecap="round" stroke-dasharray="40 14"/><circle cx="100" cy="12" r="7" fill="#22D3E6"/></g>
+        <g class="r2"><circle cx="100" cy="100" r="97" fill="none" stroke="rgba(220,235,255,.35)" stroke-width="1.5" stroke-dasharray="2 8"/><circle cx="197" cy="100" r="5" fill="#F7B21A"/></g>
+        <path class="spark" d="M172 24 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4z" fill="#F7B21A"/>
+        <path class="spark" d="M22 168 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z" fill="#1E9BEA"/>
+      </svg>
+      <img src="img/weiyan-symbol-320.webp" alt="">
+    </div>
+    <div class="ld-brand">微研 WEIYAN<small>科學教育・探索未來</small></div>
     <div class="ld-meta"><span>AI ROBOT CAR · SYSTEM BOOT</span><span class="ld-pct" id="ldPct">0</span></div>
     <div class="ld-track"><div class="ld-fill" id="ldFill"></div><svg class="ld-car" id="ldCar"><use href="#car"/></svg></div>
     <div class="ld-log" id="ldLog"></div>
@@ -508,7 +509,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 110px;color:var(--muted)}
 
 <!-- ===== 導覽列 ===== -->
 <nav class="nav" id="nav">
-  <a href="#top" class="brand"><img src="img/weiyan-logo-360.jpg" alt="微研 Weiyan 標誌"><span>微研 Weiyan<small>SCIENCE EDU</small></span></a>
+  <a href="#top" class="brand"><img src="img/weiyan-symbol-96.webp" alt="微研 Weiyan 標誌"><span>微研 Weiyan<small>SCIENCE EDU</small></span></a>
   <ul>
     <li><a href="#features">課程特色</a></li>
     <li><a href="#path">8 堂課</a></li>
@@ -543,7 +544,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 110px;color:var(--muted)}
     <div class="cam" id="cam">
       <i class="corner c1"></i><i class="corner c2"></i><i class="corner c3"></i><i class="corner c4"></i>
       <div class="cam-frame">
-        <img src="img/kids-car.webp" alt="學生蹲在地上調整自走車">
+        <img src="img/hero.webp" alt="兩位學生蹲在地上調整自走車">
         <div class="scan"></div>
         <div class="hud tl">CAM-01 · PERCEPTION</div>
         <div class="hud tr">REC</div>
@@ -655,17 +656,26 @@ footer{border-top:1px solid var(--line);padding:56px 0 110px;color:var(--muted)}
       <p>微研課堂實況：寫程式、上場測試、團隊除錯。</p>
     </div>
     <div class="gallery" data-reveal>
-      <figure class="g1"><img src="img/track.webp" alt="自走車道路場地與學生" loading="lazy"><figcaption>城市道路場地實測</figcaption></figure>
-      <figure class="g2"><img src="img/coding.webp" alt="學生在電腦教室撰寫積木程式" loading="lazy"><figcaption>積木式程式設計</figcaption></figure>
-      <figure class="g3"><img src="img/car-floor.webp" alt="自走車在地墊上行駛" loading="lazy"><figcaption>觀察、修正、再測試</figcaption></figure>
-      <figure class="g4"><img src="img/build.webp" alt="老師與學生一起調整自走車" loading="lazy"><figcaption>老師一對一引導</figcaption></figure>
-      <figure class="g5"><img src="img/arena.webp" alt="機器人任務場地" loading="lazy"><figcaption>任務場地挑戰</figcaption></figure>
-      <figure class="g6"><img src="img/track-crowd.webp" alt="學生圍觀自走車道路測試" loading="lazy"><figcaption>大家一起看結果</figcaption></figure>
-      <figure class="g7"><img src="img/coding2.webp" alt="學生專注寫程式" loading="lazy"><figcaption>專注解題的時刻</figcaption></figure>
+      <figure class="g1"><img src="img/g-coding.webp" alt="學生在電腦教室用積木式程式設計" loading="lazy"><figcaption>積木式程式設計</figcaption></figure>
+      <figure class="g2"><img src="img/g-track.webp" alt="自走車城市道路場地與學生" loading="lazy"><figcaption>城市道路場地實測</figcaption></figure>
+      <figure class="g3"><img src="img/g-carfloor.webp" alt="學生看著自走車在地墊上行駛" loading="lazy"><figcaption>觀察、修正、再測試</figcaption></figure>
+      <figure class="g4"><img src="img/g-teach.webp" alt="老師蹲下來和學生一起調整自走車" loading="lazy"><figcaption>老師一對一引導</figcaption></figure>
+      <figure class="g5"><img src="img/g-cars.webp" alt="桌上整排的自走車" loading="lazy"><figcaption>自走車整裝待命</figcaption></figure>
+      <figure class="g6"><img src="img/g-smile.webp" alt="學生們開心比讚" loading="lazy"><figcaption>一起學，笑得最開心</figcaption></figure>
+      <figure class="g7"><img src="img/g-proud.webp" alt="學生拿著作品開心微笑" loading="lazy"><figcaption>「我做到了！」</figcaption></figure>
     </div>
   </div>
 </section>
 <div id="lightbox"><img alt=""></div>
+
+<section class="band" id="band" aria-label="課堂氛圍">
+  <div class="band-img" id="bandImg" role="img" aria-label="學生們在課堂上舉手搶答"></div>
+  <div class="wrap band-txt" data-reveal>
+    <span class="en">EVERY CLASS · 每一堂</span>
+    <p>不是坐著聽，<br>是<span class="gold-text">搶著舉手</span>的課</p>
+    <a href="#register" class="btn magnetic">我也要加入 →</a>
+  </div>
+</section>
 
 <!-- ===== 費用 + 資訊 ===== -->
 <section id="price">
@@ -809,7 +819,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 110px;color:var(--muted)}
 
 <footer>
   <div class="wrap foot">
-    <a href="#top" class="brand"><img src="img/weiyan-logo-360.jpg" alt="微研 Weiyan"><span><b>微研 Weiyan</b><br>科學教育・探索未來</span></a>
+    <a href="#top" class="foot-logo"><img src="img/weiyan-logo-480.webp" alt="微研 WEIYAN 科學教育・探索未來"></a>
     <div style="text-align:right">AI 自走車常態班｜小小駕訓班<br>每週三 17:00–18:30・一期 8 堂</div>
   </div>
   <div class="wrap"><small>課綱對應說明課程可對應之學習概念，不代表經教育主管機關認證。© 2026 微研 Weiyan 科學教育</small></div>
@@ -902,6 +912,7 @@ addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', scrollY > 40);
   const reg = $('#register').getBoundingClientRect();
   mcta.classList.toggle('hide', scrollY < innerHeight * .6 || reg.top < innerHeight);
+  if (!reduce) { const b = $('#band').getBoundingClientRect(); if (b.bottom > 0 && b.top < innerHeight) $('#bandImg').style.setProperty('--py', ((b.top + b.height / 2 - innerHeight / 2) * -.12) + 'px'); }
 }, { passive: true });
 $('#menuBtn').addEventListener('click', () => nav.classList.toggle('open'));
 $$('.nav ul a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
