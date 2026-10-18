@@ -60,7 +60,8 @@ function doPost(e) {
       if (HEADERS[i] === '處理狀態') return '待聯繫';
       return k ? safe_(data[k]) : '';
     });
-    sh.appendRow(row);
+    // 不用 appendRow：它會無視純文字格式，把 09xx 電話轉成數字吃掉開頭的 0
+    sh.getRange(sh.getLastRow() + 1, 1, 1, row.length).setNumberFormat('@').setValues([row]);
 
     if (NOTIFY_EMAIL) {
       MailApp.sendEmail(NOTIFY_EMAIL,
