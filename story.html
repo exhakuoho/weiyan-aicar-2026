@@ -338,6 +338,14 @@ section{position:relative;padding:120px 0}
 .honest{margin-top:20px;padding:18px 20px;border-radius:18px;background:rgba(5,11,31,.7);border:1px dashed rgba(34,211,230,.45);color:#c9d8f2;font-size:15px;max-width:640px}
 .honest b{color:var(--cyan)}
 footer{border-top:1px solid var(--line);padding:46px 0 60px;color:var(--muted);font-size:14px}
+.home-banner{display:flex;align-items:center;gap:22px;padding:20px 26px;margin-bottom:44px;border-radius:26px;background:#fff;color:#0B2A66;box-shadow:0 30px 70px -30px rgba(34,211,230,.55);transition:transform .3s,box-shadow .3s}
+.home-banner:hover{transform:translateY(-3px);box-shadow:0 36px 80px -26px rgba(34,211,230,.8)}
+.home-banner img{width:84px;height:84px;flex:none}
+.home-banner .hb-t{flex:1;min-width:0}
+.home-banner .hb-t b{display:block;font-size:clamp(19px,2.4vw,24px);font-weight:900;line-height:1.35}
+.home-banner .hb-t span{display:block;color:#4b5a7a;font-size:14px;margin-top:4px}
+.home-banner .hb-go{flex:none;padding:12px 22px;border-radius:999px;background:linear-gradient(120deg,#22D3E6,#0A63D6);color:#fff;font-weight:800;white-space:nowrap}
+@media (max-width:640px){.home-banner{flex-wrap:wrap;gap:14px 16px;padding:18px}.home-banner img{width:64px;height:64px}.home-banner .hb-go{width:100%;text-align:center}}
 .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
 .foot img{width:150px;border-radius:20px;background:#fff;padding:6px}
 
@@ -684,6 +692,7 @@ footer{border-top:1px solid var(--line);padding:46px 0 60px;color:var(--muted);f
 </section>
 
 <footer>
+  <div class="wrap"><a class="home-banner" href="https://weiyan.designjarvis.com/"><img src="img/weiyan-emblem-240.webp" width="240" height="240" alt="微研 Weiyan 標誌"><span class="hb-t"><b>微研 Weiyan 科學教育官網</b><span>更多常態課程、營隊、教具與教材，都在這裡</span></span><span class="hb-go">前往官網 →</span></a></div>
   <div class="wrap foot">
     <a href="index.html"><img src="img/weiyan-logo-480.webp" alt="微研 WEIYAN 科學教育・探索未來"></a>
     <div style="text-align:right">《曙城重啟》為微研 AI 自走車常態班的故事化教材<br>© 2026 微研 Weiyan 科學教育</div>
